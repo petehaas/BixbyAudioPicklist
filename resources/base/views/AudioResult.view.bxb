@@ -1,0 +1,98 @@
+result-view {
+  match: audioPlayer.AudioItem(this) 
+  
+  render {
+    
+    if (size(this) == 1) {
+      
+       layout {
+        
+      section {
+          
+        content {
+          
+            compound-card {
+              content {
+                 image-card {
+              image-background-color (Transparent)
+              text-position (Below)
+              title-area {
+                slot1 {
+                  single-line {
+                    text {
+                      value("Title:  #{value(this.title)}")
+                      style(Detail_L)    
+                    }
+                  }
+                }
+                slot2 {
+                  single-line {
+                    text {
+                      value("Source:  #{value(this.artist)}")
+                      style(Detail_L)
+                    }
+                  }
+                }
+               
+              }
+              
+              image-url {
+                template("#{value(this.albumArtUrl)}")
+              }
+              on-click {
+                intent {
+                  goal: PlayAudio
+                  value-set: audioPlayer.AudioItem { $expr(this)}
+                }
+              }
+            }
+              }
+              chin {
+                
+                slot2 {
+                  template (PLAY)
+                }
+                
+              }
+               on-click {
+                intent {
+                  goal: PlayAudio
+                  value-set: audioPlayer.AudioItem { $expr(this)}
+                  
+                }
+              }
+            } // compound card
+            
+        }
+      }
+    }
+    } // details
+    else {
+      list-of (this) {
+        where-each (item) {
+          thumbnail-card {
+  
+           image-object-fit (Contain)
+            image-url ("#{value(item.albumArtUrl)}")
+            title-area {
+             
+              slot2 {
+                single-line {
+                  text {
+                    value ("Title: #{value(item.title)}")
+                    style(Detail_M)
+                  }
+                }
+              }
+              
+              
+              
+            }
+          }
+        }
+           
+      }
+    }
+   
+  }
+}

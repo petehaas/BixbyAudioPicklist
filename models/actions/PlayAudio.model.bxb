@@ -1,0 +1,26 @@
+action (PlayAudio) {
+ type(Search)
+  collect {
+    
+        input (audioInfo) {
+         type (audioPlayer.AudioInfo)
+         min (Required) max (One)
+         
+         hidden
+       }
+      
+    computed-input (contentToPlay) {
+      description (By passing in the AudioInfo object to the PlayAudio action, we ask the client to play our sound.)
+      type (audioPlayer.Result)
+      compute {
+        intent {
+          goal: audioPlayer.PlayAudio
+          value: $expr(audioInfo)
+        }
+      }
+      hidden
+    }
+   
+  }
+  output (viv.core.Text)
+}

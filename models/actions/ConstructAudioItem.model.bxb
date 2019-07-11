@@ -1,0 +1,21 @@
+action (ConstructAudioItem) {
+  type(Search)
+  description (Create a list of audio items based on a search term)
+  collect {
+    
+    input (searchNumber) {
+      type (viv.core.Integer)
+      min (Optional) max (One)
+      validate {
+        if (exists(searchNumber) && (searchNumber < 1 || searchNumber > 5)) {
+          prompt {
+            dialog("Please select a number between 1 and 5")
+          }
+        }
+      }
+    }
+  }
+  
+  output (audioPlayer.AudioItem)
+  
+}

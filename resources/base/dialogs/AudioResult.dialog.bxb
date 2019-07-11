@@ -1,0 +1,14 @@
+dialog (Result) {
+  match: ConstructAudioItem(this) {
+    from-input: viv.core.Integer(searchNumber)
+    to-output: audioPlayer.AudioItem(audio)
+  }
+  
+  if (size(audio) > 1) {
+    template(" I found #{size(audio)} numbers")   
+  }
+  else {
+     template("The number #{value(searchNumber)}") 
+  }
+ 
+}

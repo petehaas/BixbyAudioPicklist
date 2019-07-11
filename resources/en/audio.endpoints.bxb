@@ -1,0 +1,17 @@
+endpoints {
+  action-endpoints {
+   
+    action-endpoint (ConstructAudioItem) {
+      accepted-inputs (searchNumber)
+      local-endpoint (ConstructAudioItem.js)
+    }
+     action-endpoint (ConstructAudioInfo) {
+      accepted-inputs (audioItem)
+      local-endpoint (ConstructAudioInfo.js)
+    }
+    
+    action-endpoint (PlayAudio) {
+      local-endpoint (PlayAudio.js)
+    }
+  }
+}

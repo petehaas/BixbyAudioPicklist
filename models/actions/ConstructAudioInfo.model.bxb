@@ -1,0 +1,11 @@
+action (ConstructAudioInfo) {
+  type(Constructor)
+  description (Build Audio input)
+  collect {
+    input (audioItem) {
+      type (audioPlayer.AudioItem)
+      min (Required) max (One)
+    }
+  }
+  output (audioPlayer.AudioInfo)
+}
